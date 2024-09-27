@@ -1,6 +1,9 @@
 import streamlit as st
 import spacy
 import difflib
+import os
+from dotenv import load_env
+load_env()
 
 '''Initialize spaCy English model'''
 nlp = spacy.load("en_core_web_sm")
