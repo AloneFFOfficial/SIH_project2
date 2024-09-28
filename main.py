@@ -2,8 +2,12 @@ import streamlit as st
 import spacy
 import difflib
 import os
+import google.generativeai as genai
 from dotenv import load_dotenv
 load_dotenv()
+
+gemini_api_key=os.environ["Gemini_Api_Key"]
+
 
 '''Initialize spaCy English model'''
 nlp = spacy.load("en_core_web_sm")
@@ -19,6 +23,13 @@ faq = {
     "Who is the principal of Shyam Lal College?": "The principal is Prof. Rabi Narayan Kar.",
     "What are the library timings?": "The library is open from 9 AM to 5 PM on weekdays."
 }
+
+'''Google gemini setup'''
+def get_ai_response(api_key: str, prompt: str) -> str:
+    genai.configure(api_key=api_key)
+    model = genai.GenerativeModel("gemini-1.5-flash")
+    response = model.generate_content(prompt)
+    return response.text
 
 '''Simple NLP setup with spaCy'''
 def preprocess_input(query):
