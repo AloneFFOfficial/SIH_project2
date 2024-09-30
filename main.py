@@ -4,7 +4,7 @@ import difflib
 import os
 import google.generativeai as genai
 from dotenv import load_dotenv
-load_dotenv()
+load_dotenv('config.env')
 
 gemini_api_key=os.environ["Gemini_Api_Key"]
 
@@ -58,7 +58,10 @@ def chatbot_interface():
         if closest_question:
             st.write(f"**Answer:** {faq[closest_question]}")
         else:
-            st.write("Sorry, I don't have an answer for that right now.")
+            prompt = f"You are a chatbot which helps users regarding the Shyam Lal College. Answer the following user query {user_query}"
+            st.write("Getting AI response...")
+            response=get_ai_response(gemini_api_key,prompt)
+            st.write("Ai: "+ response)
 
 if __name__ == "__main__":
     chatbot_interface()
