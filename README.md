@@ -1,5 +1,4 @@
 
-```markdown
 # Shyam Lal College FAQ Chatbot
 
 This project is a chatbot application built with Streamlit, spaCy, difflib, and Google's Generative AI API. The chatbot provides answers to frequently asked questions (FAQs) related to Shyam Lal College, University of Delhi. If the user's question is not among the predefined FAQs, the chatbot leverages Google Generative AI to provide a response.
